@@ -1,0 +1,104 @@
+def daily_rainfall():
+  rain=[]
+  totalrain=0
+  maximumrain=0
+  for i in range(1,Days+1):
+    print(i,"/",month,"/",year)
+    rainfall=float(input("Enter the amounnt of rainfall of the above date in millimeters rounded off to one decimal place :"))
+    rain.append(rainfall)
+    totalrain=totalrain+rainfall
+    if rainfall>maximumrain:
+      maximumrain=rainfall
+  i=1
+  for x in rain:
+    if x>150.0:
+      print(i,"/",month,"/",year,": extremely heavy rain")
+    elif x<=150.0 and x>70.0:
+      print(i,"/",month,"/",year,": very heavy rain")
+    elif x<=70.0 and x>30.0:
+      print(i,"/",month,"/",year,": heavy rain")
+    elif x<=30.0 and x>10.0:
+      print(i,"/",month,"/",year,": moderate rain")
+    elif x<=10.0 and x>=1.0:
+      print(i,"/",month,"/",year,": light rain")
+    elif x<1.0 and x>0.0:
+      print(i,"/",month,"/",year,": very light rain")
+    else:
+      print(i,"/",month,"/",year,": no rain")
+    i=i+1
+  print("the amount rainfall for each day of", month, "in order are", rain)
+  print("the total rainfall for the month of", month, "is", totalrain,"millimeters")
+  print("the maximum rainfall in a day for the month of", month, "was", maximumrain,"millimeters")
+
+
+def daily_sunshine():
+  temp=[]
+  sun=[]
+  totalsunshine=0
+  maximumsunshine=0
+  for i in range(1,Days+1):
+    print(i,"/",month,"/",year)
+    temperature=float(input("Enter temperature of the above date rounded off to one decimal place :"))
+    sunshine=int(input("Enter the number of minutes of sunshine for the above date :"))
+    temp.append(temperature)
+    sun.append(sunshine)
+    totalsunshine=totalsunshine+sunshine
+    if sunshine>maximumsunshine:
+      maximumsunshine=sunshine
+  i=1
+  for x in temp:
+    if x>=35.0:
+      print(i,"/",month,"/",year,": extremely hot day")
+    elif x<35.0 and x>=25.0:
+      print(i,"/",month,"/",year,": moderately hot day")
+    elif x<25.0 and x>=16.0:
+      print(i,"/",month,"/",year,": less hot day")
+    elif x<16.0 and x>=5.0:
+      print(i,"/",month,"/",year,": cold day")
+    elif x<5.0 and x>=0.0:
+      print(i,"/",month,"/",year,": very cold day")
+    else:
+      print(i,"/",month,"/",year,": extremely cold day")
+    i=i+1
+  i=1
+  for x in sun:
+    if x>=480:
+      print(i,"/",month,"/",year,": very sunny day")
+    elif x<480 and x>=240:
+      print(i,"/",month,"/",year,": moderately sunny day")
+    elif x<240 and x>0:
+      print(i,"/",month,"/",year,": very less sunny day, partially cloudy")
+    else:
+      print(i,"/",month,"/",year,": very cloudy day")
+    i=i+1
+  print("the temperatures of each day of", month, "in order are", temp)
+  print("the number of minutes of sunshine for each day of", month, "in order are :", sun)
+  print("the total sunshine for the month of", month, "is", totalsunshine,"minutes")
+  print("the maximum sunshine in a day for the month of", month, "was", maximumsunshine,"minutes")
+
+
+year=int(input("Enter the required year :"))
+month_days={
+      "January": 31,
+      "February": 28,
+      "March": 31,
+      "April": 30,
+      "May": 31,
+      "June": 30,
+      "July": 31,
+      "August": 31,
+      "September": 30,
+      "October": 31,
+      "November": 30,
+      "December": 31,
+  }
+if (year%4)==0:
+  month_days.update({"February": 29})
+month=str(input("Enter the required month :"))
+if month not in month_days:
+  print("invalid month entered. Please check your spelling.")
+  'break'
+Days=month_days[month]
+
+daily_rainfall()
+daily_sunshine()
